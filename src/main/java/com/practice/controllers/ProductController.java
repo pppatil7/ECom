@@ -6,10 +6,9 @@ import com.practice.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +22,20 @@ public class ProductController {
     public ResponseEntity<ProductDto> createProduct(@RequestBody CreateProductDto createProductDto) {
         ProductDto productDto = productService.createProduct(createProductDto);
         return new ResponseEntity<>(productDto, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{productId}")
+    public ResponseEntity<ProductDto> updateProductByProductId(@PathVariable Long productId,
+                                                               @RequestBody CreateProductDto createProductDto) {
+        ProductDto productDto = productService.updateProductByProductId(productId, createProductDto);
+        return ResponseEntity.ok(productDto);
+    }
+
+    @PatchMapping("/{productId}")
+    public ResponseEntity<ProductDto> updatePartialProductByProductId(@PathVariable Long productId,
+                                                                      @RequestBody Map<String, Object> updates) {
+        ProductDto productDto = productService.updatePartialProductByProductId(productId, updates);
+        return ResponseEntity.ok(productDto);
     }
 
 }
