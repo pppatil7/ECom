@@ -22,7 +22,5 @@ public class Product {
 
     private String productTitle;
 
-    private Double productPrice;
-
 
 }

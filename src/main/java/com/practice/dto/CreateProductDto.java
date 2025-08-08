@@ -13,6 +13,4 @@ public class CreateProductDto {
 
     private String productTitle;
 
-    private Double productPrice;
-
 }
