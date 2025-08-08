@@ -9,12 +9,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDetailsDto {
+public class ProductDto {
 
 
     private String productId;
 
     private String productTitle;
+
+    private Double productPrice;
 
 
 }

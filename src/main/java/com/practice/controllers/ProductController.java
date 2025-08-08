@@ -1,7 +1,7 @@
 package com.practice.controllers;
 
 import com.practice.dto.CreateProductDto;
-import com.practice.dto.ProductDetailsDto;
+import com.practice.dto.ProductDto;
 import com.practice.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,9 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductDetailsDto> createProduct(@RequestBody CreateProductDto createProductDto) {
-        ProductDetailsDto productDetailsDto = productService.createProduct(createProductDto);
-        return new ResponseEntity<>(productDetailsDto, HttpStatus.CREATED);
+    public ResponseEntity<ProductDto> createProduct(@RequestBody CreateProductDto createProductDto) {
+        ProductDto productDto = productService.createProduct(createProductDto);
+        return new ResponseEntity<>(productDto, HttpStatus.CREATED);
     }
 
 }

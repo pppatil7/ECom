@@ -1,11 +1,11 @@
 package com.practice.services;
 
 import com.practice.dto.CreateProductDto;
-import com.practice.dto.ProductDetailsDto;
+import com.practice.dto.ProductDto;
 
 public interface ProductService {
 
 
-    ProductDetailsDto createProduct(CreateProductDto createProductDto);
+    ProductDto createProduct(CreateProductDto createProductDto);
 
 }

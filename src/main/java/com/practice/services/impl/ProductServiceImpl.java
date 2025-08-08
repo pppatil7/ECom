@@ -1,7 +1,7 @@
 package com.practice.services.impl;
 
 import com.practice.dto.CreateProductDto;
-import com.practice.dto.ProductDetailsDto;
+import com.practice.dto.ProductDto;
 import com.practice.entities.Product;
 import com.practice.repositories.ProductRepository;
 import com.practice.services.ProductService;
@@ -18,9 +18,9 @@ public class ProductServiceImpl implements ProductService {
     private final ModelMapper modelMapper;
 
     @Override
-    public ProductDetailsDto createProduct(CreateProductDto createProductDto) {
+    public ProductDto createProduct(CreateProductDto createProductDto) {
         Product product = modelMapper.map(createProductDto, Product.class);
         Product savedProduct = productRepository.save(product);
-        return modelMapper.map(savedProduct, ProductDetailsDto.class);
+        return modelMapper.map(savedProduct, ProductDto.class);
     }
 }
