@@ -12,6 +12,4 @@ import lombok.Setter;
 public class CreateSubCategoryDto {
 
     private String subCategoryName;
-
-    private Long categoryId;
 }
