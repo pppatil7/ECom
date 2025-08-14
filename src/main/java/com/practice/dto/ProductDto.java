@@ -16,5 +16,7 @@ public class ProductDto {
 
     private String productTitle;
 
+    private Long productPrice;
+
 
 }

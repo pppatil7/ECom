@@ -45,6 +45,9 @@ public class ProductServiceImpl implements ProductService {
                 case "productTitle":
                     product.setProductTitle((String) value);
                     break;
+                case "productPrice":
+                    product.setProductPrice((Long) value);
+                    break;
                 default:
                     throw new IllegalArgumentException("Field is not Supported");
             }
