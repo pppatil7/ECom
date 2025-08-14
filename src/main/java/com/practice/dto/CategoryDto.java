@@ -1,6 +1,5 @@
 package com.practice.dto;
 
-import com.practice.entities.SubCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ public class CategoryDto {
 
     private String categoryName;
 
-    private List<SubCategory> subCategories;
+    private List<SubCategoryDto> subCategories;
 
 
 }
