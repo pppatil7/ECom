@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
@@ -23,4 +26,18 @@ public class CategoryServiceImpl implements CategoryService {
         Category savedCategory = categoryRepository.save(category);
         return modelMapper.map(savedCategory, CategoryDto.class);
     }
+
+    @Override
+    public List<CategoryDto> getAllCategories() {
+        List<Category> categoryList = categoryRepository.findAll();
+        List<CategoryDto> categoryDtoList = new ArrayList<>();
+        CategoryDto categoryDto = new CategoryDto();
+        for (Category category : categoryList) {
+            categoryDto = modelMapper.map(category, CategoryDto.class);
+            categoryDtoList.add(categoryDto);
+        }
+        return categoryDtoList;
+    }
+
+
 }
