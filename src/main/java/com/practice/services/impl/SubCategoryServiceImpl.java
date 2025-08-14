@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,6 +37,13 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 
     @Override
     public List<SubCategoryDto> getAllSubCategories() {
-        return List.of();
+        List<SubCategory> subCategories = subCategoryRepository.findAll();
+        List<SubCategoryDto> subCategoryDtoList = new ArrayList<>();
+        SubCategoryDto subCategoryDto;
+        for (SubCategory subCategory : subCategories) {
+            subCategoryDto = modelMapper.map(subCategory, SubCategoryDto.class);
+            subCategoryDtoList.add(subCategoryDto);
+        }
+        return subCategoryDtoList;
     }
 }

@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryDto> getAllCategories() {
         List<Category> categoryList = categoryRepository.findAll();
         List<CategoryDto> categoryDtoList = new ArrayList<>();
-        CategoryDto categoryDto = new CategoryDto();
+        CategoryDto categoryDto;
         for (Category category : categoryList) {
             categoryDto = modelMapper.map(category, CategoryDto.class);
             categoryDtoList.add(categoryDto);
