@@ -22,5 +22,7 @@ public class Product {
 
     private String productTitle;
 
+    private Long productPrice;
+
 
 }
