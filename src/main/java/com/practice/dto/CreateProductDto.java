@@ -13,6 +13,8 @@ public class CreateProductDto {
 
     private String productTitle;
 
+    private String productBrandName;
+
     private Long productPrice;
 
 }

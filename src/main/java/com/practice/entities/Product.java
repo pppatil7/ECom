@@ -22,6 +22,8 @@ public class Product {
 
     private String productTitle;
 
+    private String productBrandName;
+
     private Long productPrice;
 
 

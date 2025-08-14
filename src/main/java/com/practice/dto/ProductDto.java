@@ -16,6 +16,8 @@ public class ProductDto {
 
     private String productTitle;
 
+    private String productBrandName;
+
     private Long productPrice;
 
 
