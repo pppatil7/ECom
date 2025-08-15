@@ -20,9 +20,6 @@ public class ProductDto {
 
     private Long productPrice;
 
-    private Long subCategoryId;
-
-    private String subCategoryName;
-
+    private SubCategoryDto subCategory;
 
 }

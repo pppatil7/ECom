@@ -15,7 +15,5 @@ public class SubCategoryDto {
 
     private String subCategoryName;
 
-    private Long categoryId;
-
-    private String categoryName;
+    private CategoryDto category;
 }

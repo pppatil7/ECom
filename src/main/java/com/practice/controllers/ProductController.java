@@ -12,15 +12,15 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/products")
+@RequestMapping("/")
 public class ProductController {
 
 
     private final ProductService productService;
 
-    @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody CreateProductDto createProductDto) {
-        ProductDto productDto = productService.createProduct(createProductDto);
+    @PostMapping("categories/{categoryId}/subcategories/{subCategoryId}/products")
+    public ResponseEntity<ProductDto> createProduct(@PathVariable Long categoryId, @PathVariable Long subCategoryId, @RequestBody CreateProductDto createProductDto) {
+        ProductDto productDto = productService.createProduct(categoryId, subCategoryId, createProductDto);
         return new ResponseEntity<>(productDto, HttpStatus.CREATED);
     }
 

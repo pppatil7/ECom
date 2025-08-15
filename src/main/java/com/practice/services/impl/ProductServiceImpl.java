@@ -3,8 +3,10 @@ package com.practice.services.impl;
 import com.practice.dto.CreateProductDto;
 import com.practice.dto.ProductDto;
 import com.practice.entities.Product;
+import com.practice.entities.SubCategory;
 import com.practice.exceptions.ResourceNotFoundException;
 import com.practice.repositories.ProductRepository;
+import com.practice.repositories.SubCategoryRepository;
 import com.practice.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,11 +20,21 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
+    private final SubCategoryRepository subCategoryRepository;
+
     private final ModelMapper modelMapper;
 
     @Override
-    public ProductDto createProduct(CreateProductDto createProductDto) {
+    public ProductDto createProduct(Long categoryId, Long subCategoryId, CreateProductDto createProductDto) {
+        SubCategory subCategory = subCategoryRepository.findById(subCategoryId).
+                orElseThrow(() -> new ResourceNotFoundException("SubCategory", "subCategoryId", String.valueOf(subCategoryId)));
+        if (!subCategory.getCategory().getCategoryId().equals(categoryId)) {
+            throw new IllegalArgumentException(
+                    "SubCategory with id " + subCategoryId + " does not belong to Category with id " + categoryId
+            );
+        }
         Product product = modelMapper.map(createProductDto, Product.class);
+        product.setSubCategory(subCategory);
         Product savedProduct = productRepository.save(product);
         return modelMapper.map(savedProduct, ProductDto.class);
     }

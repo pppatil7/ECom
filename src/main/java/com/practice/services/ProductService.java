@@ -8,7 +8,7 @@ import java.util.Map;
 public interface ProductService {
 
 
-    ProductDto createProduct(CreateProductDto createProductDto);
+    ProductDto createProduct(Long categoryId, Long subCategoryId, CreateProductDto createProductDto);
 
     ProductDto updateProductByProductId(Long productId, CreateProductDto createProductDto);
 
